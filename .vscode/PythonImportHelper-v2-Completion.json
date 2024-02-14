@@ -1,0 +1,585 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "URIRef",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Namespace",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "URIRef",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Namespace",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "URIRef",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "openai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "openai",
+        "description": "openai",
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "Word2Vec",
+        "importPath": "gensim.models",
+        "description": "gensim.models",
+        "isExtraImport": true,
+        "detail": "gensim.models",
+        "documentation": {}
+    },
+    {
+        "label": "OWL",
+        "importPath": "rdflib.namespace",
+        "description": "rdflib.namespace",
+        "isExtraImport": true,
+        "detail": "rdflib.namespace",
+        "documentation": {}
+    },
+    {
+        "label": "OWL",
+        "importPath": "rdflib.namespace",
+        "description": "rdflib.namespace",
+        "isExtraImport": true,
+        "detail": "rdflib.namespace",
+        "documentation": {}
+    },
+    {
+        "label": "networkx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "networkx",
+        "description": "networkx",
+        "detail": "networkx",
+        "documentation": {}
+    },
+    {
+        "label": "rdflib_to_networkx_multidigraph",
+        "importPath": "rdflib.extras.external_graph_libs",
+        "description": "rdflib.extras.external_graph_libs",
+        "isExtraImport": true,
+        "detail": "rdflib.extras.external_graph_libs",
+        "documentation": {}
+    },
+    {
+        "label": "TriplesFactory",
+        "importPath": "pykeen.triples",
+        "description": "pykeen.triples",
+        "isExtraImport": true,
+        "detail": "pykeen.triples",
+        "documentation": {}
+    },
+    {
+        "label": "pipeline",
+        "importPath": "pykeen.pipeline",
+        "description": "pykeen.pipeline",
+        "isExtraImport": true,
+        "detail": "pykeen.pipeline",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "PCA",
+        "importPath": "sklearn.decomposition",
+        "description": "sklearn.decomposition",
+        "isExtraImport": true,
+        "detail": "sklearn.decomposition",
+        "documentation": {}
+    },
+    {
+        "label": "ComputeFile",
+        "importPath": "compute_files",
+        "description": "compute_files",
+        "isExtraImport": true,
+        "detail": "compute_files",
+        "documentation": {}
+    },
+    {
+        "label": "ComputeFile",
+        "importPath": "compute_files",
+        "description": "compute_files",
+        "isExtraImport": true,
+        "detail": "compute_files",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Embedding",
+        "importPath": "embeddings",
+        "description": "embeddings",
+        "isExtraImport": true,
+        "detail": "embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "Embedding",
+        "importPath": "embeddings",
+        "description": "embeddings",
+        "isExtraImport": true,
+        "detail": "embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "itertools",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "itertools",
+        "description": "itertools",
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "pprint",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pprint",
+        "description": "pprint",
+        "detail": "pprint",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_similarity",
+        "importPath": "sklearn.metrics.pairwise",
+        "description": "sklearn.metrics.pairwise",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics.pairwise",
+        "documentation": {}
+    },
+    {
+        "label": "DeepSimilarity",
+        "importPath": "deep_similarity",
+        "description": "deep_similarity",
+        "isExtraImport": true,
+        "detail": "deep_similarity",
+        "documentation": {}
+    },
+    {
+        "label": "validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "validators",
+        "description": "validators",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "multiprocessing",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "LLM",
+        "importPath": "model",
+        "description": "model",
+        "isExtraImport": true,
+        "detail": "model",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "Llama2Tokenizer",
+        "importPath": "modelscope.models.nlp.llama2",
+        "description": "modelscope.models.nlp.llama2",
+        "isExtraImport": true,
+        "detail": "modelscope.models.nlp.llama2",
+        "documentation": {}
+    },
+    {
+        "label": "Model",
+        "importPath": "modelscope",
+        "description": "modelscope",
+        "isExtraImport": true,
+        "detail": "modelscope",
+        "documentation": {}
+    },
+    {
+        "label": "snapshot_download",
+        "importPath": "modelscope",
+        "description": "modelscope",
+        "isExtraImport": true,
+        "detail": "modelscope",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GenerationConfig",
+        "importPath": "transformers.generation",
+        "description": "transformers.generation",
+        "isExtraImport": true,
+        "detail": "transformers.generation",
+        "documentation": {}
+    },
+    {
+        "label": "ComputeFile",
+        "kind": 6,
+        "importPath": "compute_files",
+        "description": "compute_files",
+        "peekOfCode": "class ComputeFile:\n    def __init__(self, input_path='', output_path=''):\n        self.input_path = input_path\n        self.output_path = output_path\n        self.input_files = []\n        self.output_files = []\n        self.extensions = ['.ttl', '.nt', '.rdf', '.owl', '.csv']\n    def build_graph(self, input_file=''):\n        graph = Graph()\n        graph.parse(input_file, format=get_format(value=input_file))",
+        "detail": "compute_files",
+        "documentation": {}
+    },
+    {
+        "label": "DeepSimilarity",
+        "kind": 6,
+        "importPath": "deep_similarity",
+        "description": "deep_similarity",
+        "peekOfCode": "class DeepSimilarity:\n    def __init__(self, model_name='', model=None):\n        self.model_name = model_name\n        self.tokenizer, self.model = model\n        print('model name : ', model_name)\n    def llama(self, query=\"\"):\n        question = f\"{query}\"\n        system_message = 'you are a helpful assistant!'\n        inputs = {'text': question,\n                  'system': system_message, 'max_length': 4}",
+        "detail": "deep_similarity",
+        "documentation": {}
+    },
+    {
+        "label": "Embedding",
+        "kind": 6,
+        "importPath": "embeddings",
+        "description": "embeddings",
+        "peekOfCode": "class Embedding:\n    def __init__(self, file='', dimension=10, model_name=''):\n        self.file = file\n        self.dimension = dimension\n        self.model_name = model_name\n    def load_file(self):\n        g = Graph()\n        g.parse(self.file)\n        return g\n    def build_triples(self, with_predicate=True):",
+        "detail": "embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "FeatureBuilding",
+        "kind": 6,
+        "importPath": "features",
+        "description": "features",
+        "peekOfCode": "class FeatureBuilding: \n    def __init__(self, input_path='', output_path='', suffix='', algo='', dimension=10):\n        self.input_path = input_path + suffix + '/'\n        self.output_path = output_path\n        self.suffix = suffix\n        self.dimension = dimension\n        self.algo = algo\n        files = ComputeFile(input_path=self.input_path).build_list_files()\n        self.source_file = self.filter(keyword='source', all=files)\n        self.target_file = self.filter(keyword='target', all=files)",
+        "detail": "features",
+        "documentation": {}
+    },
+    {
+        "label": "append_rows_to_csv",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(\n            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'Threshold', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    new_data = pd.DataFrame(\n        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'Threshold', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(measure_file, index=False)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_alignment_metrics",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def calculate_alignment_metrics(output_file, truth_file, suffix, threshold, count_pairs, selected_count, running_time):\n    measure_file = output_file.replace(\n        'tmp_valid_same_as.ttl', 'measure_file.csv')\n    output_graph = Graph()\n    output_graph.parse(output_file, format=\"turtle\")\n    truth_graph = Graph()\n    truth_graph.parse(truth_file, format=\"turtle\")\n    found_alignments = set(output_graph.subjects())\n    true_alignments = set(truth_graph.subjects())\n    print('Count of true alignments : ', len(true_alignments))",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_sim",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def cosine_sim(v1=[], v2=[], co_sim=0.0):\n    output = 0.0\n    dot = np.dot(v1, v2)\n    cosine = dot / (np.linalg.norm(v1) * np.linalg.norm(v2))\n    output = cosine\n    if output >= co_sim:\n        return True, output\n    return False, output\ndef build_literal_chain(entity=[]):\n    output = []",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "build_literal_chain",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def build_literal_chain(entity=[]):\n    output = []\n    for resource, object_value in entity:\n        if not validators.url(object_value):\n            output.append(object_value)\n    if len(output) >= 2:\n        return str('. '.join(output))\n    return None\ndef sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "sim",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)\n    if chain1 != None and chain2 != None:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "create_and_save_rdf_from_dict",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def create_and_save_rdf_from_dict(input_dict, output_file):\n    graph = Graph()\n    # owl = Namespace(\"http://www.w3.org/2002/07/owl#\")\n    for source, target in input_dict.items():\n        source_uri = URIRef(source)\n        target_uri = URIRef(target)\n        graph.add((source_uri, OWL.sameAs, target_uri))\n    graph.serialize(destination=output_file, format=\"turtle\")\ndef get_rdf_subjects(rdf_graph):\n    output = list(rdf_graph.subjects())",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_rdf_subjects",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_rdf_subjects(rdf_graph):\n    output = list(rdf_graph.subjects())\n    return output\ndef get_rdf_triples(rdf_graph):\n    subjects = {}\n    objects = {}\n    for s, p, o in tqdm(rdf_graph):\n        s = str(s)\n        p = str(p)\n        o = str(o)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_rdf_triples",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_rdf_triples(rdf_graph):\n    subjects = {}\n    objects = {}\n    for s, p, o in tqdm(rdf_graph):\n        s = str(s)\n        p = str(p)\n        o = str(o)\n        if not s in subjects:\n            subjects[s] = []\n        if not o in objects:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "parallel_running",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def parallel_running(sub1, sub2, vector1, vector2, subs1, subs2, co_sim, model):\n    v, cos = cosine_sim(v1=vector1, v2=vector2, co_sim=co_sim)\n    if v:\n        if sim(entity1=subs1[sub1], entity2=subs2[sub2], model=model):\n            return sub1, sub2, 1\n    return None, None, 0\ndef process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "process_rdf_files",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')\n    graph2 = Graph()\n    graph2.parse(target)\n    print('Target file loaded ..100%')\n    source_embeddings = Embedding(\n        file=source, dimension=dimension, model_name=embedding).run()\n    target_embeddings = Embedding(",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "start_time",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "start_time = time.time()\noutput_alignements = {}\nquestion_pattern = \"\"\"\n    Answers with exactly one word (yes or no), if the following contains have informations that make them \n    refer to the same reality : \n    - `{chain1}`\n    - `{chain2}`\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "output_alignements",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "output_alignements = {}\nquestion_pattern = \"\"\"\n    Answers with exactly one word (yes or no), if the following contains have informations that make them \n    refer to the same reality : \n    - `{chain1}`\n    - `{chain2}`\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "question_pattern",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "question_pattern = \"\"\"\n    Answers with exactly one word (yes or no), if the following contains have informations that make them \n    refer to the same reality : \n    - `{chain1}`\n    - `{chain2}`\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "LLM",
+        "kind": 6,
+        "importPath": "model",
+        "description": "model",
+        "peekOfCode": "class LLM:\n    def __init__(self, model_name=None):\n        self.model_name = model_name\n    def llama(self):\n        model_dir = snapshot_download(\"modelscope/Llama-2-7b-chat-ms\", revision='v1.0.2',\n                                      ignore_file_pattern=[r'.+\\.bin$'])\n        tokenizer = Llama2Tokenizer.from_pretrained(model_dir)\n        model = Model.from_pretrained(\n            model_dir,\n            torch_dtype=torch.float16,",
+        "detail": "model",
+        "documentation": {}
+    }
+]
