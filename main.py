@@ -20,13 +20,12 @@ from model import LLM
 
 start_time = time.time()
 
-output_alignements = {}
+output_alignments = {}
 
 question_pattern = """
-    Answers with exactly one word (yes or no), if the following contains have informations that make them 
-    refer to the same reality : 
-    - `{chain1}`
-    - `{chain2}`
+    A : {chain1} \n
+    B : {chain2} \n
+    Question : Do A and B refer to the same reality ? yes or no ? 
 """
 
 
@@ -35,15 +34,15 @@ def append_rows_to_csv(new_rows, measure_file):
         df = pd.read_csv(measure_file)
     except FileNotFoundError:
         df = pd.DataFrame(
-            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'Threshold', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])
+            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])
 
     new_data = pd.DataFrame(
-        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'Threshold', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])
+        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])
     df = pd.concat([df, new_data], ignore_index=True)
     df.to_csv(measure_file, index=False)
 
 
-def calculate_alignment_metrics(output_file, truth_file, suffix, threshold, count_pairs, selected_count, running_time):
+def calculate_alignment_metrics(output_file, truth_file, suffix, co_sim, llm_name, count_pairs, selected_count, running_time):
     measure_file = output_file.replace(
         'tmp_valid_same_as.ttl', 'measure_file.csv')
     output_graph = Graph()
@@ -63,7 +62,7 @@ def calculate_alignment_metrics(output_file, truth_file, suffix, threshold, coun
     f_measure = round(2 * (precision * recall) / (precision +
                                                   recall) if (precision + recall) > 0 else 0.0, 2)
 
-    append_rows_to_csv([(suffix, precision, recall, f_measure, threshold,
+    append_rows_to_csv([(suffix, precision, recall, f_measure, co_sim, llm_name,
                          count_pairs, selected_count, round(running_time, 2))], measure_file)
     return {
         "precision": precision,
@@ -104,16 +103,16 @@ def sim(entity1=[], entity2=[], model=None):
     chain1 = build_literal_chain(entity=entity1)
     chain2 = build_literal_chain(entity=entity2)
 
-    if chain1 != None and chain2 != None:
-        query = question_pattern.format(chain1=chain1, chain2=chain2)
+    # if chain1 != None and chain2 != None:
+    #     query = question_pattern.format(chain1=chain1, chain2=chain2)
 
-        print('\n \n')
-        print(query)
-        response = DeepSimilarity(model=model).run(query=query)
-        if 'yes' in response.lower():
-            print('#>>', response)
-            return True
-        print('\n \n')
+    #     print('\n \n')
+    #     print(query)
+    #     response = DeepSimilarity(model=model).run(query=query)
+    #     if 'yes' in response.lower():
+    #         print('#>>', response)
+    #         return True
+    #     print('\n \n')
     return False
 
 
@@ -168,12 +167,12 @@ def process_rdf_files(source, target, output_file, truth_file, suffix, dimension
     graph2.parse(target)
     print('Target file loaded ..100%')
 
-    source_embeddings = Embedding(
-        file=source, dimension=dimension, model_name=embedding).run()
-    target_embeddings = Embedding(
-        file=target, dimension=dimension, model_name=embedding).run()
-    valid_alignements = Embedding(
-        file=truth_file, dimension=dimension).build_triples(with_predicate=False)
+    graph = graph1 + graph2
+
+    embeddings = Embedding(graph=graph, file=source,
+                           dimension=dimension, model_name=embedding).run()
+    # valid_alignments = Embedding(
+    #     file=truth_file, dimension=dimension).build_triples(with_predicate=False)
 
     graph3 = Graph()
     graph3.parse(truth_file)
@@ -192,36 +191,30 @@ def process_rdf_files(source, target, output_file, truth_file, suffix, dimension
     pairs = list(itertools.product(
         list(subjects1.keys()), list(subjects2.keys())))
     print('In all : ', len(pairs))
-    _pairs = []
-    for sub1 in tqdm(subjects1):
-        _subjects2 = subjects2
-        for sub2 in _subjects2:
-            inter = set(subjects1[sub1]) & set(subjects2[sub2])
-            if len(inter) >= 1:
-                _pairs.append((sub1, sub2))
-    print('they are to compute : ', len(_pairs))
     # exit()
 
     # load the llm
     model = LLM(model_name=llm_name).load()
     # loading llm ended
 
+    print('LLM loaded :-->')
     count = 0
     with multiprocessing.Pool(processes=10) as pool:
         results = pool.starmap(parallel_running,
-                               [(sub1, sub2, source_embeddings[sub1], target_embeddings[sub2], subjects1, subjects2, co_sim, model)
-                                for sub1, sub2 in tqdm(_pairs) if sub1 in source_embeddings and sub2 in target_embeddings])
+                               [(sub1, sub2, embeddings[sub1], embeddings[sub2], subjects1, subjects2, co_sim, model)
+                                for sub1, sub2 in tqdm(pairs) if sub1 in embeddings and sub2 in embeddings])
         for sub1, sub2, status in results:
             if sub1 != None and sub2 != None:
-                output_alignements[sub1] = sub2
+                output_alignments[sub1] = sub2
                 count = count + 1
-    print('All are : ', len(results), ' count : ', count)
-    print(f' \nThey are {len(list(output_alignements.keys()))} in all')
-    create_and_save_rdf_from_dict(output_alignements, output_file)
+    print('Total pairs over cosine similarity : ',
+          len(results), '  count : ', count)
+    print(f' \n Total alignment {len(list(output_alignments.keys()))} in all')
+    create_and_save_rdf_from_dict(output_alignments, output_file)
     end_time = time.time()
     execution_time = end_time - start_time
     metrics = calculate_alignment_metrics(
-        output_file, truth_file, suffix, co_sim, len(pairs), len(_pairs), execution_time)
+        output_file, truth_file, suffix, co_sim, llm_name, len(pairs), count, execution_time)
     print("Precision : ", metrics["precision"])
     print("Recall : ", metrics["recall"])
     print("F-measure : ", metrics["f_measure"])

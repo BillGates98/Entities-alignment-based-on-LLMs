@@ -6,6 +6,10 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation import GenerationConfig
 from tqdm import tqdm
 
+from transformers import BloomForCausalLM
+from transformers import BloomForTokenClassification
+from transformers import BloomTokenizerFast
+
 
 class LLM:
 
@@ -32,6 +36,13 @@ class LLM:
 
         return (tokenizer, model)
 
+    def bloom(self):
+        tokenizer = BloomTokenizerFast.from_pretrained(
+            "bigscience/bloom-1b7", local_files_only=False)
+        model = BloomForCausalLM.from_pretrained(
+            "bigscience/bloom-1b7", local_files_only=False)
+        return (tokenizer, model)
+
     def load(self):
         if self.model_name == 'llama':
             return self.llama()
@@ -39,4 +50,6 @@ class LLM:
             return self.qwen()
         elif self.model_name == 'gpt':
             return (None, None)
+        elif self.model_name == 'bloom':
+            return self.bloom()
         return (None, None)

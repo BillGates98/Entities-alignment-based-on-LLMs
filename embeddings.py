@@ -2,9 +2,6 @@ from gensim.models import Word2Vec
 from rdflib import Graph, URIRef, Namespace, Literal
 from rdflib.namespace import OWL
 from rdflib import Graph
-import networkx as nx
-from rdflib.extras.external_graph_libs import rdflib_to_networkx_multidigraph
-# from node2vec import Node2Vec
 from pykeen.triples import TriplesFactory
 from pykeen.pipeline import pipeline
 import pandas as pd
@@ -13,7 +10,8 @@ from sklearn.decomposition import PCA
 
 class Embedding:
 
-    def __init__(self, file='', dimension=10, model_name=''):
+    def __init__(self, graph=None, file=None, dimension=10, model_name=''):
+        self.graph = graph
         self.file = file
         self.dimension = dimension
         self.model_name = model_name
@@ -21,6 +19,8 @@ class Embedding:
     def load_file(self):
         g = Graph()
         g.parse(self.file)
+        if self.graph != None:
+            return self.graph
         return g
 
     def build_triples(self, with_predicate=True):
@@ -50,13 +50,6 @@ class Embedding:
         ), vector_size=self.dimension, window=5, sg=1, min_count=1, workers=6)
         print('model generated')
         return model.wv  # vector = model.wv['http://example.org/resource1']
-
-    def build_n2v_model(self):
-        nx_graph = rdflib_to_networkx_multidigraph(self.load_file())
-        node2vec = Node2Vec(nx_graph, dimensions=self.dimension,
-                            walk_length=30, num_walks=10, workers=5)
-        model = node2vec.fit(window=10, min_count=1, batch_words=4)
-        return model  # model.wv['subject']
 
     def build_pykeen_pipeline(self, model=''):
         output = {}

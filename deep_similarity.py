@@ -34,6 +34,19 @@ class DeepSimilarity:
         except Exception as e:
             return 'no'
 
+    def bloom(self, query=''):
+        inputs = self.tokenizer(query, return_tensors="pt")
+        result_length = 4
+        output = (self.tokenizer.decode(self.model.generate(inputs["input_ids"],
+                                                            max_length=result_length,
+                                                            num_beams=2,
+                                                            no_repeat_ngram_size=2,
+                                                            early_stopping=True
+                                                            )[0]))
+        if 'yes' in output.lower():
+            return 'yes'
+        return 'no'
+
     def run(self, query=''):
         if self.model_name == 'llama':
             return self.llama(query=query)
@@ -41,4 +54,6 @@ class DeepSimilarity:
             return self.qwen(query=query)
         elif self.model_name == 'gpt':
             return self.gpt(query=query)
+        elif self.model_name == 'bloom':
+            return self.bloom(query=query)
         return ''

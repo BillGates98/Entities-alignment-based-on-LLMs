@@ -178,23 +178,6 @@
         "documentation": {}
     },
     {
-        "label": "networkx",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "networkx",
-        "description": "networkx",
-        "detail": "networkx",
-        "documentation": {}
-    },
-    {
-        "label": "rdflib_to_networkx_multidigraph",
-        "importPath": "rdflib.extras.external_graph_libs",
-        "description": "rdflib.extras.external_graph_libs",
-        "isExtraImport": true,
-        "detail": "rdflib.extras.external_graph_libs",
-        "documentation": {}
-    },
-    {
         "label": "TriplesFactory",
         "importPath": "pykeen.triples",
         "description": "pykeen.triples",
@@ -413,6 +396,30 @@
         "documentation": {}
     },
     {
+        "label": "BloomForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BloomForTokenClassification",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BloomTokenizerFast",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
         "label": "GenerationConfig",
         "importPath": "transformers.generation",
         "description": "transformers.generation",
@@ -443,7 +450,7 @@
         "kind": 6,
         "importPath": "embeddings",
         "description": "embeddings",
-        "peekOfCode": "class Embedding:\n    def __init__(self, file='', dimension=10, model_name=''):\n        self.file = file\n        self.dimension = dimension\n        self.model_name = model_name\n    def load_file(self):\n        g = Graph()\n        g.parse(self.file)\n        return g\n    def build_triples(self, with_predicate=True):",
+        "peekOfCode": "class Embedding:\n    def __init__(self, graph=None, file=None, dimension=10, model_name=''):\n        self.graph = graph\n        self.file = file\n        self.dimension = dimension\n        self.model_name = model_name\n    def load_file(self):\n        g = Graph()\n        g.parse(self.file)\n        if self.graph != None:",
         "detail": "embeddings",
         "documentation": {}
     },
@@ -461,7 +468,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(\n            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'Threshold', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    new_data = pd.DataFrame(\n        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'Threshold', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(measure_file, index=False)",
+        "peekOfCode": "def append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(\n            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    new_data = pd.DataFrame(\n        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(measure_file, index=False)",
         "detail": "main",
         "documentation": {}
     },
@@ -470,7 +477,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def calculate_alignment_metrics(output_file, truth_file, suffix, threshold, count_pairs, selected_count, running_time):\n    measure_file = output_file.replace(\n        'tmp_valid_same_as.ttl', 'measure_file.csv')\n    output_graph = Graph()\n    output_graph.parse(output_file, format=\"turtle\")\n    truth_graph = Graph()\n    truth_graph.parse(truth_file, format=\"turtle\")\n    found_alignments = set(output_graph.subjects())\n    true_alignments = set(truth_graph.subjects())\n    print('Count of true alignments : ', len(true_alignments))",
+        "peekOfCode": "def calculate_alignment_metrics(output_file, truth_file, suffix, co_sim, llm_name, count_pairs, selected_count, running_time):\n    measure_file = output_file.replace(\n        'tmp_valid_same_as.ttl', 'measure_file.csv')\n    output_graph = Graph()\n    output_graph.parse(output_file, format=\"turtle\")\n    truth_graph = Graph()\n    truth_graph.parse(truth_file, format=\"turtle\")\n    found_alignments = set(output_graph.subjects())\n    true_alignments = set(truth_graph.subjects())\n    print('Count of true alignments : ', len(true_alignments))",
         "detail": "main",
         "documentation": {}
     },
@@ -497,7 +504,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)\n    if chain1 != None and chain2 != None:",
+        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)\n    # if chain1 != None and chain2 != None:",
         "detail": "main",
         "documentation": {}
     },
@@ -542,7 +549,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')\n    graph2 = Graph()\n    graph2.parse(target)\n    print('Target file loaded ..100%')\n    source_embeddings = Embedding(\n        file=source, dimension=dimension, model_name=embedding).run()\n    target_embeddings = Embedding(",
+        "peekOfCode": "def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')\n    graph2 = Graph()\n    graph2.parse(target)\n    print('Target file loaded ..100%')\n    graph = graph1 + graph2\n    embeddings = Embedding(graph=graph, file=source,\n                           dimension=dimension, model_name=embedding).run()",
         "detail": "main",
         "documentation": {}
     },
@@ -551,16 +558,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "start_time = time.time()\noutput_alignements = {}\nquestion_pattern = \"\"\"\n    Answers with exactly one word (yes or no), if the following contains have informations that make them \n    refer to the same reality : \n    - `{chain1}`\n    - `{chain2}`\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:",
+        "peekOfCode": "start_time = time.time()\noutput_alignments = {}\nquestion_pattern = \"\"\"\n    A : {chain1} \\n\n    B : {chain2} \\n\n    Question : Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "output_alignements",
+        "label": "output_alignments",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "output_alignements = {}\nquestion_pattern = \"\"\"\n    Answers with exactly one word (yes or no), if the following contains have informations that make them \n    refer to the same reality : \n    - `{chain1}`\n    - `{chain2}`\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)",
+        "peekOfCode": "output_alignments = {}\nquestion_pattern = \"\"\"\n    A : {chain1} \\n\n    B : {chain2} \\n\n    Question : Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:",
         "detail": "main",
         "documentation": {}
     },
@@ -569,7 +576,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "question_pattern = \"\"\"\n    Answers with exactly one word (yes or no), if the following contains have informations that make them \n    refer to the same reality : \n    - `{chain1}`\n    - `{chain2}`\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:",
+        "peekOfCode": "question_pattern = \"\"\"\n    A : {chain1} \\n\n    B : {chain2} \\n\n    Question : Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(",
         "detail": "main",
         "documentation": {}
     },
