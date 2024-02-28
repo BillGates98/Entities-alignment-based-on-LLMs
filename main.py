@@ -25,8 +25,7 @@ output_alignments = {}
 question_pattern = """
     A: "{chain1}" .\n
     B: "{chain2}" .\n
-    Answers by yes or no. 
-    Do A and B refer to the same reality ?
+    Do A and B refer to the same reality ? yes or no ? 
 """
 
 

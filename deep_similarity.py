@@ -12,9 +12,10 @@ class DeepSimilarity:
 
     def mistral(self, query=""):
         print('Mistral started generation ...0% ')
-        input_ids = self.tokenizer(query, return_tensors="pt")
-        outputs = self.model.generate(**input_ids, max_length=2000)
-        output = self.tokenizer.decode(outputs[0])
+        # input_ids = self.tokenizer(query, return_tensors="pt")
+        # outputs = self.model. # generate(**input_ids, max_length=2000)
+        output, history = self.model.chat(self.tokenizer, query, history=None)
+        # output = self.tokenizer.decode(outputs[0])
         print('Output :> ', output)
         print('Mistral ended generation ...100% ')
         if 'yes' in output.lower():
@@ -23,11 +24,12 @@ class DeepSimilarity:
 
     def qwen(self, query=''):
         print('Qwen started generation ...0% ')
-        input_ids = self.tokenizer(query, return_tensors="pt")
-        outputs = self.model.generate(**input_ids, max_length=2000)
-        output = self.tokenizer.decode(outputs[0])
+        # input_ids = self.tokenizer(query, return_tensors="pt")
+        # outputs = self.model.generate(**input_ids, max_length=2000)
+        output, history = self.model.chat(self.tokenizer, query, history=None)
+        # output = self.tokenizer.decode(output[0])
         print('Output :> ', output)
-        print('Qwen ended generation ...100% ')
+        print('Qwen ended answering ...100% ')
         if 'yes' in output.lower():
             return 'yes'
         return 'no'
