@@ -12,7 +12,7 @@ class DeepSimilarity:
 
     def mistral(self, query=""):
         input_ids = self.tokenizer(query, return_tensors="pt")
-        outputs = self.model.generate(**input_ids)
+        outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         if 'yes' in output.lower():
             return 'yes'
@@ -21,7 +21,7 @@ class DeepSimilarity:
     def qwen(self, query=''):
         print('Qwen started generation ...0% ')
         input_ids = self.tokenizer(query, return_tensors="pt")
-        outputs = self.model.generate(**input_ids)
+        outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         print('Output :> ', output)
         print('Qwen ended generation ...100% ')
@@ -31,7 +31,7 @@ class DeepSimilarity:
 
     def gpt(self, query=''):
         input_ids = self.tokenizer(query, return_tensors="pt")
-        outputs = self.model.generate(**input_ids)
+        outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         if 'yes' in output.lower():
             return 'yes'
@@ -39,7 +39,7 @@ class DeepSimilarity:
 
     def bloom(self, query=''):
         input_ids = self.tokenizer(query, return_tensors="pt")
-        outputs = self.model.generate(**input_ids)
+        outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         if 'yes' in output.lower():
             return 'yes'
