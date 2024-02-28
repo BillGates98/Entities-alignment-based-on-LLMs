@@ -1,0 +1,16 @@
+https://huggingface.co/openai-community/gpt2/resolve/main/.gitattributes
+https://huggingface.co/openai-community/gpt2/resolve/main/64-8bits.tflite
+https://huggingface.co/openai-community/gpt2/resolve/main/64-fp16.tflite
+https://huggingface.co/openai-community/gpt2/resolve/main/64.tflite
+https://huggingface.co/openai-community/gpt2/resolve/main/README.md
+https://huggingface.co/openai-community/gpt2/resolve/main/config.json
+https://huggingface.co/openai-community/gpt2/resolve/main/flax_model.msgpack
+https://huggingface.co/openai-community/gpt2/resolve/main/generation_config.json
+https://huggingface.co/openai-community/gpt2/resolve/main/merges.txt
+https://huggingface.co/openai-community/gpt2/resolve/main/model.safetensors
+https://huggingface.co/openai-community/gpt2/resolve/main/pytorch_model.bin
+https://huggingface.co/openai-community/gpt2/resolve/main/rust_model.ot
+https://huggingface.co/openai-community/gpt2/resolve/main/tf_model.h5
+https://huggingface.co/openai-community/gpt2/resolve/main/tokenizer.json
+https://huggingface.co/openai-community/gpt2/resolve/main/tokenizer_config.json
+https://huggingface.co/openai-community/gpt2/resolve/main/vocab.json
