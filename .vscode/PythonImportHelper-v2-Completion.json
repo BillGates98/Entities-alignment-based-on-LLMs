@@ -162,7 +162,7 @@
         "documentation": {}
     },
     {
-        "label": "AutoModelForCausalLM",
+        "label": "AutoModel",
         "importPath": "transformers",
         "description": "transformers",
         "isExtraImport": true,
