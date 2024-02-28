@@ -19,9 +19,12 @@ class DeepSimilarity:
         return 'no'
 
     def qwen(self, query=''):
+        print('Qwen started generation ...0% ', output)
         input_ids = self.tokenizer(query, return_tensors="pt")
         outputs = self.model.generate(**input_ids, max_length=200)
         output = self.tokenizer.decode(outputs[0])
+        print('Output :> ', output)
+        print('Qwen ended generation ...100% ')
         if 'yes' in output.lower():
             return 'yes'
         return 'no'

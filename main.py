@@ -108,7 +108,7 @@ def sim(entity1=[], entity2=[], model=None):
         query = question_pattern.format(chain1=chain1, chain2=chain2)
 
         print('\n \n')
-        print(query)
+        print('User Question :#> ', query)
         response = DeepSimilarity(
             model_name=llm_name, model=_model).run(query=query)
         print("Response # ", response)
