@@ -630,7 +630,7 @@
         "kind": 6,
         "importPath": "deep_similarity",
         "description": "deep_similarity",
-        "peekOfCode": "class DeepSimilarity:\n    def __init__(self, model_name='', model=None):\n        self.model_name = model_name\n        self.tokenizer, self.model = model\n        print('model name : ', model_name)\n    def mistral(self, query=\"\"):\n        input_ids = self.tokenizer(query, return_tensors=\"pt\")\n        outputs = self.model.generate(**input_ids, max_length=2000)\n        output = self.tokenizer.decode(outputs[0])\n        if 'yes' in output.lower():",
+        "peekOfCode": "class DeepSimilarity:\n    def __init__(self, model_name='', model=None):\n        self.model_name = model_name\n        self.tokenizer, self.model = model\n        print('model name : ', model_name)\n    def mistral(self, query=\"\"):\n        input_ids = self.tokenizer(query, return_tensors=\"pt\").to('cuda')\n        outputs = self.model.generate(**input_ids, max_length=2000)\n        output = self.tokenizer.decode(outputs[0])\n        if 'yes' in output.lower():",
         "detail": "deep_similarity",
         "documentation": {}
     },

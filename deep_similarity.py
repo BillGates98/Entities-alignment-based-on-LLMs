@@ -11,7 +11,7 @@ class DeepSimilarity:
         print('model name : ', model_name)
 
     def mistral(self, query=""):
-        input_ids = self.tokenizer(query, return_tensors="pt")
+        input_ids = self.tokenizer(query, return_tensors="pt").to('cuda')
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         if 'yes' in output.lower():
@@ -20,7 +20,7 @@ class DeepSimilarity:
 
     def qwen(self, query=''):
         print('Qwen started generation ...0% ')
-        input_ids = self.tokenizer(query, return_tensors="pt")
+        input_ids = self.tokenizer(query, return_tensors="pt").to('cuda')
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         print('Output :> ', output)
@@ -31,7 +31,7 @@ class DeepSimilarity:
 
     def gpt(self, query=''):
         print('GPT started generation ...0% ')
-        input_ids = self.tokenizer(query, return_tensors="pt")
+        input_ids = self.tokenizer(query, return_tensors="pt").to('cuda')
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         print('Output :> ', output)
@@ -42,7 +42,7 @@ class DeepSimilarity:
 
     def bloom(self, query=''):
         print('Bloom started generation ...0% ')
-        input_ids = self.tokenizer(query, return_tensors="pt")
+        input_ids = self.tokenizer(query, return_tensors="pt").to('cuda')
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
         print('Output :> ', output)
