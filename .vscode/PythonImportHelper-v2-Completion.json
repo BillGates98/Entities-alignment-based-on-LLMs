@@ -146,11 +146,35 @@
         "documentation": {}
     },
     {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
         "isExtraImport": true,
-        "detail": "tqdm",
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
         "documentation": {}
     },
     {
@@ -347,63 +371,6 @@
         "documentation": {}
     },
     {
-        "label": "torch",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "torch",
-        "description": "torch",
-        "detail": "torch",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "BloomForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "BloomForTokenClassification",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "BloomTokenizerFast",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GenerationConfig",
-        "importPath": "transformers.generation",
-        "description": "transformers.generation",
-        "isExtraImport": true,
-        "detail": "transformers.generation",
-        "documentation": {}
-    },
-    {
         "label": "ComputeFile",
         "kind": 6,
         "importPath": "compute_files",
@@ -419,6 +386,33 @@
         "description": "deep_similarity",
         "peekOfCode": "class DeepSimilarity:\n    def __init__(self, model_name='', model=None):\n        self.model_name = model_name\n        self.tokenizer, self.model = model\n        print('model name : ', model_name)\n    def llama(self, query=\"\"):\n        question = f\"{query}\"\n        system_message = 'you are a helpful assistant!'\n        inputs = {'text': question,\n                  'system': system_message, 'max_length': 4}",
         "detail": "deep_similarity",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizers",
+        "kind": 5,
+        "importPath": "download_model",
+        "description": "download_model",
+        "peekOfCode": "tokenizers = []\nmodels = []\nmodels = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')",
+        "detail": "download_model",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "kind": 5,
+        "importPath": "download_model",
+        "description": "download_model",
+        "peekOfCode": "models = []\nmodels = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')\n    tokenizer = AutoTokenizer.from_pretrained(models[m][0])",
+        "detail": "download_model",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "kind": 5,
+        "importPath": "download_model",
+        "description": "download_model",
+        "peekOfCode": "models = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')\n    tokenizer = AutoTokenizer.from_pretrained(models[m][0])\n    model = AutoModelForCausalLM.from_pretrained(models[m][0])",
+        "detail": "download_model",
         "documentation": {}
     },
     {
@@ -561,7 +555,7 @@
         "kind": 6,
         "importPath": "model",
         "description": "model",
-        "peekOfCode": "class LLM:\n    def __init__(self, model_name=None):\n        self.model_name = model_name\n    def llama(self):\n        # model_dir = snapshot_download(\"modelscope/Llama-2-7b-chat-ms\", revision='v1.0.2',\n        #                               ignore_file_pattern=[r'.+\\.bin$'])\n        # tokenizer = Llama2Tokenizer.from_pretrained(model_dir)\n        # model = Model.from_pretrained(\n        #     model_dir,\n        #     torch_dtype=torch.float16,",
+        "peekOfCode": "class LLM:\n    def __init__(self, model_name=None):\n        self.model_name = model_name\n        self.models = {\n            \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n            \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n            \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n            \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n        }\n    def mistral(self):",
         "detail": "model",
         "documentation": {}
     }

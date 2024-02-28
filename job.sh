@@ -8,7 +8,7 @@
 
 for dataset in 'doremus' # 'restaurant' 'person' 'SPIMBENCH_small-2019' 'SPIMBENCH_large-2016'
 do
-    for model in 'qwen' # 'llama2' 'gpt' 'bloom'
+    for model in 'qwen' # 'mistral' 'gemma' 'bloom'
     do
         python3.8 ./main.py --input_path ./data/ --output_path ./outputs/ --suffix $dataset --dimension 200 --embedding r2v --llm_name $model --co_sim 0.7 --cpu 10
     done

@@ -47,6 +47,14 @@ class DeepSimilarity:
             return 'yes'
         return 'no'
 
+    def gemma(self, query=''):
+        input_ids = self.tokenizer(query, return_tensors="pt").to("cuda")
+        outputs = self.model.generate(**input_ids, max_length=200)
+        output = self.tokenizer.decode(outputs[0])
+        if 'yes' in output.lower():
+            return 'yes'
+        return 'no'
+
     def run(self, query=''):
         if self.model_name == 'llama':
             return self.llama(query=query)

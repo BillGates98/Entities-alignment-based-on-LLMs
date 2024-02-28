@@ -1,54 +1,43 @@
-import torch
-# from modelscope.models.nlp.llama2 import Llama2Tokenizer
-# from modelscope import Model, snapshot_download
-
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from transformers.generation import GenerationConfig
-from tqdm import tqdm
-
-from transformers import BloomForCausalLM
-from transformers import BloomForTokenClassification
-from transformers import BloomTokenizerFast
 
 
 class LLM:
 
     def __init__(self, model_name=None):
         self.model_name = model_name
+        self.models = {
+            "mistral": ["mistralai/Mistral-7B-v0.1", "./dir_models/mistral"],
+            "qwen": ["Qwen/Qwen1.5-7B-Chat", "./dir_models/qwen"],
+            "bloom": ["bigscience/bloom-7b1", "./dir_models/bloom"],
+            "gemma": ["google/gemma-2b-it", "./dir_models/gemma"]
+        }
 
-    def llama(self):
-        # model_dir = snapshot_download("modelscope/Llama-2-7b-chat-ms", revision='v1.0.2',
-        #                               ignore_file_pattern=[r'.+\.bin$'])
-        # tokenizer = Llama2Tokenizer.from_pretrained(model_dir)
-        # model = Model.from_pretrained(
-        #     model_dir,
-        #     torch_dtype=torch.float16,
-        #     device_map='auto')
-        tokenizer = AutoTokenizer.from_pretrained(
-            "meta-llama/Llama-2-70b-chat-hf")
-        model = AutoModelForCausalLM.from_pretrained(
-            "meta-llama/Llama-2-70b-chat-hf")
+    def mistral(self):
+        tokenizer = AutoTokenizer.from_pretrained(self.models['mistral'][1])
+        model = AutoModelForCausalLM.from_pretrained(self.models['mistral'][1])
         return (tokenizer, model)
 
     def qwen(self):
-        model = AutoModelForCausalLM.from_pretrained(
-            "Qwen/Qwen1.5-7B-Chat", device_map="auto")
-        tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
+        model = AutoModelForCausalLM.from_pretrained(self.models['qwen'][1])
+        tokenizer = AutoTokenizer.from_pretrained(self.models['qwen'][1])
         return (tokenizer, model)
 
     def bloom(self):
-        model = BloomForCausalLM.from_pretrained(
-            "bigscience/bloom-1b7", local_files_only=False)
-        tokenizer = BloomTokenizerFast.from_pretrained(
-            "bigscience/bloom-1b7", local_files_only=False)
+        model = AutoModelForCausalLM.from_pretrained(self.models['bloom'][1])
+        tokenizer = AutoTokenizer.from_pretrained(self.models['bloom'][1])
+        return (tokenizer, model)
+
+    def gemma(self):
+        tokenizer = AutoTokenizer.from_pretrained(self.models['gemma'][1])
+        model = AutoModelForCausalLM.from_pretrained(self.models['gemma'][1])
         return (tokenizer, model)
 
     def load(self):
-        if self.model_name == 'llama2':
+        if self.model_name == 'mistral':
             return self.llama()
         elif self.model_name == 'qwen':
             return self.qwen()
-        elif self.model_name == 'gpt':
+        elif self.model_name == 'gemma':
             return (None, None)
         elif self.model_name == 'bloom':
             return self.bloom()
