@@ -1,3 +1,0 @@
-Dataset,Precision,Recall,F1-score,Threshold,CandidatesPairs,SelectedCandidates,RunningTime
-doremus,0.17,0.95,0.29,0.7,7803985,495227,10.11
-doremus,0.0,0.0,0.0,0.7,7803985,495227,13.54

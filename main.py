@@ -103,16 +103,16 @@ def sim(entity1=[], entity2=[], model=None):
     chain1 = build_literal_chain(entity=entity1)
     chain2 = build_literal_chain(entity=entity2)
 
-    # if chain1 != None and chain2 != None:
-    #     query = question_pattern.format(chain1=chain1, chain2=chain2)
+    if chain1 != None and chain2 != None:
+        query = question_pattern.format(chain1=chain1, chain2=chain2)
 
-    #     print('\n \n')
-    #     print(query)
-    #     response = DeepSimilarity(model=model).run(query=query)
-    #     if 'yes' in response.lower():
-    #         print('#>>', response)
-    #         return True
-    #     print('\n \n')
+        print('\n \n')
+        print(query)
+        response = DeepSimilarity(model=model).run(query=query)
+        if 'yes' in response.lower():
+            print('#>>', response)
+            return True
+        print('\n \n')
     return False
 
 
@@ -157,7 +157,7 @@ def parallel_running(sub1, sub2, vector1, vector2, subs1, subs2, co_sim, model):
     return None, None, 0
 
 
-def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):
+def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name, cpus):
 
     graph1 = Graph()
     graph1.parse(source)
@@ -199,7 +199,7 @@ def process_rdf_files(source, target, output_file, truth_file, suffix, dimension
 
     print('LLM loaded :-->')
     count = 0
-    with multiprocessing.Pool(processes=10) as pool:
+    with multiprocessing.Pool(processes=cpus) as pool:
         results = pool.starmap(parallel_running,
                                [(sub1, sub2, embeddings[sub1], embeddings[sub2], subjects1, subjects2, co_sim, model)
                                 for sub1, sub2 in tqdm(pairs) if sub1 in embeddings and sub2 in embeddings])
@@ -238,6 +238,7 @@ if __name__ == "__main__":
         parser.add_argument("--embedding", type=str, default="r2v")
         parser.add_argument("--llm_name", type=str, default="GPT-3.5-turbo")
         parser.add_argument("--co_sim", type=float, default=0.0)
+        parser.add_argument("--cpu", type=int, default=10)
         return parser.parse_args()
     args = arg_manager()
     source = detect_file(path=args.input_path+args.suffix, type='source')
@@ -251,4 +252,4 @@ if __name__ == "__main__":
         os.makedirs(output_path)
     print(source, target, output_file, truth_file)
     process_rdf_files(source, target, output_file,
-                      truth_file, args.suffix, args.dimension, args.embedding, args.co_sim, args.llm_name)
+                      truth_file, args.suffix, args.dimension, args.embedding, args.co_sim, args.llm_name, args.cpu)

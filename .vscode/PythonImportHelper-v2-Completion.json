@@ -504,7 +504,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)\n    # if chain1 != None and chain2 != None:",
+        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)\n    if chain1 != None and chain2 != None:",
         "detail": "main",
         "documentation": {}
     },
@@ -540,7 +540,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def parallel_running(sub1, sub2, vector1, vector2, subs1, subs2, co_sim, model):\n    v, cos = cosine_sim(v1=vector1, v2=vector2, co_sim=co_sim)\n    if v:\n        if sim(entity1=subs1[sub1], entity2=subs2[sub2], model=model):\n            return sub1, sub2, 1\n    return None, None, 0\ndef process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')",
+        "peekOfCode": "def parallel_running(sub1, sub2, vector1, vector2, subs1, subs2, co_sim, model):\n    v, cos = cosine_sim(v1=vector1, v2=vector2, co_sim=co_sim)\n    if v:\n        if sim(entity1=subs1[sub1], entity2=subs2[sub2], model=model):\n            return sub1, sub2, 1\n    return None, None, 0\ndef process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name, cpus):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')",
         "detail": "main",
         "documentation": {}
     },
@@ -549,7 +549,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')\n    graph2 = Graph()\n    graph2.parse(target)\n    print('Target file loaded ..100%')\n    graph = graph1 + graph2\n    embeddings = Embedding(graph=graph, file=source,\n                           dimension=dimension, model_name=embedding).run()",
+        "peekOfCode": "def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name, cpus):\n    graph1 = Graph()\n    graph1.parse(source)\n    print('Source file loaded ..100%')\n    graph2 = Graph()\n    graph2.parse(target)\n    print('Target file loaded ..100%')\n    graph = graph1 + graph2\n    embeddings = Embedding(graph=graph, file=source,\n                           dimension=dimension, model_name=embedding).run()",
         "detail": "main",
         "documentation": {}
     },

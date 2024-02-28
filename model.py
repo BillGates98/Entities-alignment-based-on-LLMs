@@ -27,24 +27,20 @@ class LLM:
         return (tokenizer, model)
 
     def qwen(self):
-        tokenizer = AutoTokenizer.from_pretrained(
-            "/openbayes/input/input0", trust_remote_code=True)
-        model = AutoModelForCausalLM.from_pretrained("/openbayes/input/input0", device_map="auto",
-                                                     trust_remote_code=True).eval()
-        model.generation_config = GenerationConfig.from_pretrained(
-            "/openbayes/input/input0", trust_remote_code=True)
-
+        model = AutoModelForCausalLM.from_pretrained(
+            "Qwen/Qwen1.5-7B-Chat", device_map="auto")
+        tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
         return (tokenizer, model)
 
     def bloom(self):
-        tokenizer = BloomTokenizerFast.from_pretrained(
-            "bigscience/bloom-1b7", local_files_only=False)
         model = BloomForCausalLM.from_pretrained(
+            "bigscience/bloom-1b7", local_files_only=False)
+        tokenizer = BloomTokenizerFast.from_pretrained(
             "bigscience/bloom-1b7", local_files_only=False)
         return (tokenizer, model)
 
     def load(self):
-        if self.model_name == 'llama':
+        if self.model_name == 'llama2':
             return self.llama()
         elif self.model_name == 'qwen':
             return self.qwen()
