@@ -748,7 +748,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "start_time = time.time()\noutput_alignments = {}\nquestion_pattern = \"\"\"\n    A : {chain1} \\n\n    B : {chain2} \\n\n    Question : Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)",
+        "peekOfCode": "start_time = time.time()\noutput_alignments = {}\nquestion_pattern = \"\"\"\n    A: \"{chain1}\" .\\n\n    B: \"{chain2}\" .\\n\n    Answers by yes or no. \n    Do A and B refer to the same reality ?\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:",
         "detail": "main",
         "documentation": {}
     },
@@ -757,7 +757,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "output_alignments = {}\nquestion_pattern = \"\"\"\n    A : {chain1} \\n\n    B : {chain2} \\n\n    Question : Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:",
+        "peekOfCode": "output_alignments = {}\nquestion_pattern = \"\"\"\n    A: \"{chain1}\" .\\n\n    B: \"{chain2}\" .\\n\n    Answers by yes or no. \n    Do A and B refer to the same reality ?\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)",
         "detail": "main",
         "documentation": {}
     },
@@ -766,7 +766,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "question_pattern = \"\"\"\n    A : {chain1} \\n\n    B : {chain2} \\n\n    Question : Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(",
+        "peekOfCode": "question_pattern = \"\"\"\n    A: \"{chain1}\" .\\n\n    B: \"{chain2}\" .\\n\n    Answers by yes or no. \n    Do A and B refer to the same reality ?\n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:",
         "detail": "main",
         "documentation": {}
     },
