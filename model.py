@@ -1,4 +1,4 @@
-from transformers import AutoModel, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 class LLM:
@@ -14,22 +14,22 @@ class LLM:
 
     def mistral(self):
         tokenizer = AutoTokenizer.from_pretrained(self.models['mistral'][1])
-        model = AutoModel.from_pretrained(self.models['mistral'][1])
+        model = AutoModelForCausalLM.from_pretrained(self.models['mistral'][1])
         return (tokenizer, model)
 
     def qwen(self):
+        model = AutoModelForCausalLM.from_pretrained(self.models['qwen'][1])
         tokenizer = AutoTokenizer.from_pretrained(self.models['qwen'][1])
-        model = AutoModel.from_pretrained(self.models['qwen'][1])
         return (tokenizer, model)
 
     def bloom(self):
-        model = AutoModel.from_pretrained(self.models['bloom'][1])
+        model = AutoModelForCausalLM.from_pretrained(self.models['bloom'][1])
         tokenizer = AutoTokenizer.from_pretrained(self.models['bloom'][1])
         return (tokenizer, model)
 
     def gpt(self):
         tokenizer = AutoTokenizer.from_pretrained(self.models['gpt'][1])
-        model = AutoModel.from_pretrained(self.models['gpt'][1])
+        model = AutoModelForCausalLM.from_pretrained(self.models['gpt'][1])
         return (tokenizer, model)
 
     def load(self):

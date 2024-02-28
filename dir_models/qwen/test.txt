@@ -1,0 +1,4 @@
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/.gitattributes
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/LICENSE
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/README.md
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/config.json

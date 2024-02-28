@@ -1,0 +1,14 @@
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/.gitattributes
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/LICENSE
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/README.md
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/config.json
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/generation_config.json
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/merges.txt
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/model-00001-of-00004.safetensors
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/model-00002-of-00004.safetensors
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/model-00003-of-00004.safetensors
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/model-00004-of-00004.safetensors
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/model.safetensors.index.json
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/tokenizer.json
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/tokenizer_config.json
+https://huggingface.co/Qwen/Qwen1.5-7B-Chat/resolve/main/vocab.json
