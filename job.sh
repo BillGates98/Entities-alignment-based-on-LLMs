@@ -10,7 +10,7 @@ for dataset in 'doremus' # 'restaurant' 'person' 'SPIMBENCH_small-2019' 'SPIMBEN
 do
     for model in 'qwen' # 'mistral' 'gpt' 'bloom'
     do
-        python3.8 ./main.py --input_path ./data/ --output_path ./outputs/ --suffix $dataset --dimension 200 --embedding r2v --llm_name $model --co_sim 0.7 --cpu 10
+        python3.8 ./main.py --input_path ./data/ --output_path ./outputs/ --suffix $dataset --dimension 200 --embedding r2v --llm_name $model --co_sim 0.7
     done
 done
 

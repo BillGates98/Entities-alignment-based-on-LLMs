@@ -93,13 +93,14 @@ def build_literal_chain(entity=[]):
     return None
 
 
-def sim(entity1=[], entity2=[], deepSim=None):
+def sim(entity1=[], entity2=[], model=None):
     # use LLM to compare entities literals
     """
         1. build chain of literals for each entity
         2. generate the complete sentence for the LLM models
         3. Call the model with the question
     """
+    llm_name, _model = model
     chain1 = build_literal_chain(entity=entity1)
     chain2 = build_literal_chain(entity=entity2)
 
@@ -108,7 +109,8 @@ def sim(entity1=[], entity2=[], deepSim=None):
 
         print('\n \n')
         print('User Question :#> ', query)
-        response = deepSim.run(query=query)
+        response = DeepSimilarity(
+            model_name=llm_name, model=_model).run(query=query)
         print("Response # ", response)
         if 'yes' in response.lower():
             print('#>>', response)
@@ -150,15 +152,15 @@ def get_rdf_triples(rdf_graph):
 # End of embedding functions
 
 
-def parallel_running(sub1, sub2, vector1, vector2, subs1, subs2, co_sim, deepSim):
+def parallel_running(sub1, sub2, vector1, vector2, subs1, subs2, co_sim, model):
     v, cos = cosine_sim(v1=vector1, v2=vector2, co_sim=co_sim)
     if v:
-        if sim(entity1=subs1[sub1], entity2=subs2[sub2], deepSim=deepSim):
+        if sim(entity1=subs1[sub1], entity2=subs2[sub2], model=model):
             return sub1, sub2, 1
     return None, None, 0
 
 
-def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name):
+def process_rdf_files(source, target, output_file, truth_file, suffix, dimension, embedding, co_sim, llm_name, cpus):
 
     graph1 = Graph()
     graph1.parse(source)
@@ -196,21 +198,21 @@ def process_rdf_files(source, target, output_file, truth_file, suffix, dimension
 
     # load the llm
     model = LLM(model_name=llm_name).load()
-    deepSim = DeepSimilarity(model_name=llm_name, model=model)
     # loading llm ended
 
     print('LLM ', llm_name, ' loaded 100% ####>>>>')
     count = 0
-    for sub1, sub2 in tqdm(pairs):
-        if sub1 in embeddings and sub2 in embeddings:
-            result = parallel_running(
-                sub1, sub2, embeddings[sub1], embeddings[sub2], subjects1, subjects2, co_sim, deepSim)
-            _, _, status = result
-            if status == 1:
+    with multiprocessing.Pool(processes=cpus) as pool:
+        results = pool.starmap(parallel_running,
+                               [(sub1, sub2, embeddings[sub1], embeddings[sub2], subjects1, subjects2, co_sim, (llm_name, model))
+                                for sub1, sub2 in tqdm(pairs) if sub1 in embeddings and sub2 in embeddings])
+        for sub1, sub2, status in results:
+            if sub1 != None and sub2 != None:
                 output_alignments[sub1] = sub2
                 count = count + 1
-                print('\n %%%%%%%%%%%%%%%%%%% \n')
-    print(f' \n Total alignments {len(list(output_alignments.keys()))}')
+    print('Total pairs over cosine similarity : ',
+          len(results), '  count : ', count)
+    print(f' \n Total alignment {len(list(output_alignments.keys()))} in all')
     create_and_save_rdf_from_dict(output_alignments, output_file)
     end_time = time.time()
     execution_time = end_time - start_time
@@ -239,6 +241,7 @@ if __name__ == "__main__":
         parser.add_argument("--embedding", type=str, default="r2v")
         parser.add_argument("--llm_name", type=str, default="GPT-3.5-turbo")
         parser.add_argument("--co_sim", type=float, default=0.0)
+        parser.add_argument("--cpu", type=int, default=10)
         return parser.parse_args()
     args = arg_manager()
     source = detect_file(path=args.input_path+args.suffix, type='source')
@@ -252,4 +255,4 @@ if __name__ == "__main__":
         os.makedirs(output_path)
     print(source, target, output_file, truth_file)
     process_rdf_files(source, target, output_file,
-                      truth_file, args.suffix, args.dimension, args.embedding, args.co_sim, args.llm_name)
+                      truth_file, args.suffix, args.dimension, args.embedding, args.co_sim, args.llm_name, args.cpu)
