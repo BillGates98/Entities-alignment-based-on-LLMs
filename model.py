@@ -1,6 +1,6 @@
 import torch
-from modelscope.models.nlp.llama2 import Llama2Tokenizer
-from modelscope import Model, snapshot_download
+# from modelscope.models.nlp.llama2 import Llama2Tokenizer
+# from modelscope import Model, snapshot_download
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation import GenerationConfig
@@ -17,13 +17,17 @@ class LLM:
         self.model_name = model_name
 
     def llama(self):
-        model_dir = snapshot_download("modelscope/Llama-2-7b-chat-ms", revision='v1.0.2',
-                                      ignore_file_pattern=[r'.+\.bin$'])
-        tokenizer = Llama2Tokenizer.from_pretrained(model_dir)
-        model = Model.from_pretrained(
-            model_dir,
-            torch_dtype=torch.float16,
-            device_map='auto')
+        # model_dir = snapshot_download("modelscope/Llama-2-7b-chat-ms", revision='v1.0.2',
+        #                               ignore_file_pattern=[r'.+\.bin$'])
+        # tokenizer = Llama2Tokenizer.from_pretrained(model_dir)
+        # model = Model.from_pretrained(
+        #     model_dir,
+        #     torch_dtype=torch.float16,
+        #     device_map='auto')
+        tokenizer = AutoTokenizer.from_pretrained(
+            "meta-llama/Llama-2-70b-chat-hf")
+        model = AutoModelForCausalLM.from_pretrained(
+            "meta-llama/Llama-2-70b-chat-hf")
         return (tokenizer, model)
 
     def qwen(self):
