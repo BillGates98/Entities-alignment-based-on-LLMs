@@ -27,7 +27,7 @@ class LLM:
         tokenizer = AutoTokenizer.from_pretrained(self.models['bloom'][1])
         return (tokenizer, model)
 
-    def gpt2(self):
+    def gpt(self):
         tokenizer = AutoTokenizer.from_pretrained(self.models['gpt'][1])
         model = AutoModelForCausalLM.from_pretrained(self.models['gpt'][1])
         return (tokenizer, model)
@@ -37,7 +37,7 @@ class LLM:
             return self.llama()
         elif self.model_name == 'qwen':
             return self.qwen()
-        elif self.model_name == 'gemma':
+        elif self.model_name == 'gpt':
             return (None, None)
         elif self.model_name == 'bloom':
             return self.bloom()
