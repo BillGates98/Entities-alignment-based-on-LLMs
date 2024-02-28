@@ -456,7 +456,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)\n    if chain1 != None and chain2 != None:",
+        "peekOfCode": "def sim(entity1=[], entity2=[], model=None):\n    # use LLM to compare entities literals\n    \"\"\"\n        1. build chain of literals for each entity\n        2. generate the complete sentence for the LLM models\n        3. Call the model with the question\n    \"\"\"\n    llm_name, _model = model\n    chain1 = build_literal_chain(entity=entity1)\n    chain2 = build_literal_chain(entity=entity2)",
         "detail": "main",
         "documentation": {}
     },

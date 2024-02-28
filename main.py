@@ -100,6 +100,7 @@ def sim(entity1=[], entity2=[], model=None):
         2. generate the complete sentence for the LLM models
         3. Call the model with the question
     """
+    llm_name, _model = model
     chain1 = build_literal_chain(entity=entity1)
     chain2 = build_literal_chain(entity=entity2)
 
@@ -108,11 +109,13 @@ def sim(entity1=[], entity2=[], model=None):
 
         print('\n \n')
         print(query)
-        response = DeepSimilarity(model=model).run(query=query)
+        response = DeepSimilarity(
+            model_name=llm_name, model=_model).run(query=query)
+        print("Response # ", response)
         if 'yes' in response.lower():
             print('#>>', response)
             return True
-        print('\n \n')
+        # print('\n \n')
     return False
 
 
@@ -197,11 +200,11 @@ def process_rdf_files(source, target, output_file, truth_file, suffix, dimension
     model = LLM(model_name=llm_name).load()
     # loading llm ended
 
-    print('LLM loaded :-->')
+    print('LLM ', llm_name, ' loaded 100% ####>>>>')
     count = 0
     with multiprocessing.Pool(processes=cpus) as pool:
         results = pool.starmap(parallel_running,
-                               [(sub1, sub2, embeddings[sub1], embeddings[sub2], subjects1, subjects2, co_sim, model)
+                               [(sub1, sub2, embeddings[sub1], embeddings[sub2], subjects1, subjects2, co_sim, (llm_name, model))
                                 for sub1, sub2 in tqdm(pairs) if sub1 in embeddings and sub2 in embeddings])
         for sub1, sub2, status in results:
             if sub1 != None and sub2 != None:
