@@ -22,11 +22,7 @@ start_time = time.time()
 
 output_alignments = {}
 
-question_pattern = """
-    A: "{chain1}" .\n
-    B: "{chain2}" .\n
-    Do A and B refer to the same reality ? yes or no ? 
-"""
+question_pattern = """A:"{chain1}". B:"{chain2}". Do you think expressions A and B are similar?. Answer exactly yes or no."""
 
 
 def append_rows_to_csv(new_rows, measure_file):

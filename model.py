@@ -1,5 +1,5 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
-
+from transformers.generation import GenerationConfig
 # self.models = {
 #             "mistral": ["mistralai/Mistral-7B-v0.1", "./dir_models/mistral/Mistral-7B-v0.1"],
 #             "qwen": ["Qwen/Qwen1.5-7B-Chat", "./dir_models/qwen/Qwen1.5-7B-Chat"],
@@ -21,22 +21,34 @@ class LLM:
 
     def mistral(self):
         tokenizer = AutoTokenizer.from_pretrained(self.models['mistral'][1])
-        model = AutoModelForCausalLM.from_pretrained(self.models['mistral'][1])
+        model = AutoModelForCausalLM.from_pretrained(
+            self.models['mistral'][1], device_map="auto", trust_remote_code=True).eval()
+        model.generation_config = GenerationConfig.from_pretrained(
+            self.models['mistral'][1])
         return (tokenizer, model)
 
     def qwen(self):
-        model = AutoModelForCausalLM.from_pretrained(self.models['qwen'][1])
+        model = AutoModelForCausalLM.from_pretrained(
+            self.models['qwen'][1], device_map="auto", trust_remote_code=True).eval()
         tokenizer = AutoTokenizer.from_pretrained(self.models['qwen'][1])
+        model.generation_config = GenerationConfig.from_pretrained(
+            self.models['qwen'][1])
         return (tokenizer, model)
 
     def bloom(self):
-        model = AutoModelForCausalLM.from_pretrained(self.models['bloom'][1])
+        model = AutoModelForCausalLM.from_pretrained(
+            self.models['bloom'][1], device_map="auto", trust_remote_code=True).eval()
         tokenizer = AutoTokenizer.from_pretrained(self.models['bloom'][1])
+        model.generation_config = GenerationConfig.from_pretrained(
+            self.models['bloom'][1])
         return (tokenizer, model)
 
     def gpt(self):
-        tokenizer = AutoTokenizer.from_pretrained(self.models['gpt'][1])
+        tokenizer = AutoTokenizer.from_pretrained(
+            self.models['gpt'][1], device_map="auto", trust_remote_code=True).eval()
         model = AutoModelForCausalLM.from_pretrained(self.models['gpt'][1])
+        model.generation_config = GenerationConfig.from_pretrained(
+            self.models['gpt'][1])
         return (tokenizer, model)
 
     def load(self):

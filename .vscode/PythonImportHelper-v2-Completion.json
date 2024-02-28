@@ -483,6 +483,14 @@
         "documentation": {}
     },
     {
+        "label": "GenerationConfig",
+        "importPath": "transformers.generation",
+        "description": "transformers.generation",
+        "isExtraImport": true,
+        "detail": "transformers.generation",
+        "documentation": {}
+    },
+    {
         "label": "DeepSimilarity",
         "kind": 6,
         "importPath": "parallel_code.deep_similarity copy",
@@ -622,7 +630,7 @@
         "kind": 6,
         "importPath": "deep_similarity",
         "description": "deep_similarity",
-        "peekOfCode": "class DeepSimilarity:\n    def __init__(self, model_name='', model=None):\n        self.model_name = model_name\n        self.tokenizer, self.model = model\n        print('model name : ', model_name)\n    def mistral(self, query=\"\"):\n        print('Mistral started generation ...0% ')\n        # input_ids = self.tokenizer(query, return_tensors=\"pt\")\n        # outputs = self.model. # generate(**input_ids, max_length=2000)\n        output, history = self.model.chat(self.tokenizer, query, history=None)",
+        "peekOfCode": "class DeepSimilarity:\n    def __init__(self, model_name='', model=None):\n        self.model_name = model_name\n        self.tokenizer, self.model = model\n        print('model name : ', model_name)\n    def mistral(self, query=\"\"):\n        input_ids = self.tokenizer(query, return_tensors=\"pt\")\n        outputs = self.model.generate(**input_ids, max_length=2000)\n        output = self.tokenizer.decode(outputs[0])\n        if 'yes' in output.lower():",
         "detail": "deep_similarity",
         "documentation": {}
     },
@@ -748,7 +756,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "start_time = time.time()\noutput_alignments = {}\nquestion_pattern = \"\"\"\n    A: \"{chain1}\" .\\n\n    B: \"{chain2}\" .\\n\n    Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)",
+        "peekOfCode": "start_time = time.time()\noutput_alignments = {}\nquestion_pattern = \"\"\"A:\"{chain1}\". B:\"{chain2}\". Do you think expressions A and B are similar?. Answer exactly yes or no.\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(\n            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    new_data = pd.DataFrame(",
         "detail": "main",
         "documentation": {}
     },
@@ -757,7 +765,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "output_alignments = {}\nquestion_pattern = \"\"\"\n    A: \"{chain1}\" .\\n\n    B: \"{chain2}\" .\\n\n    Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:",
+        "peekOfCode": "output_alignments = {}\nquestion_pattern = \"\"\"A:\"{chain1}\". B:\"{chain2}\". Do you think expressions A and B are similar?. Answer exactly yes or no.\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(\n            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    new_data = pd.DataFrame(\n        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])",
         "detail": "main",
         "documentation": {}
     },
@@ -766,7 +774,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "question_pattern = \"\"\"\n    A: \"{chain1}\" .\\n\n    B: \"{chain2}\" .\\n\n    Do A and B refer to the same reality ? yes or no ? \n\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(",
+        "peekOfCode": "question_pattern = \"\"\"A:\"{chain1}\". B:\"{chain2}\". Do you think expressions A and B are similar?. Answer exactly yes or no.\"\"\"\ndef append_rows_to_csv(new_rows, measure_file):\n    try:\n        df = pd.read_csv(measure_file)\n    except FileNotFoundError:\n        df = pd.DataFrame(\n            columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    new_data = pd.DataFrame(\n        new_rows, columns=['Dataset', 'Precision', 'Recall', 'F1-score', 'CoSimThreshold', 'LLM_name', 'CandidatesPairs', 'SelectedCandidates', 'RunningTime'])\n    df = pd.concat([df, new_data], ignore_index=True)",
         "detail": "main",
         "documentation": {}
     },
