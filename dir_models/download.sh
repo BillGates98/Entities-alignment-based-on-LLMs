@@ -6,3 +6,4 @@ while IFS= read -r line; do
 done < "$1"
 
 ## sh download.sh ./qwen/test.txt ./qwen/
+## sh download.sh ./qwen/files.txt ./qwen/

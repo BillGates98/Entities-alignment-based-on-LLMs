@@ -1,0 +1,16 @@
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/.gitattributes
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/LICENSE
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/README.md
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/config.json
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/flax_model-00001-of-00002.msgpack
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/flax_model-00002-of-00002.msgpack
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/flax_model.msgpack.index.json
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/model-00001-of-00002.safetensors
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/model-00002-of-00002.safetensors
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/model.safetensors.index.json
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/pytorch_model-00001-of-00002.bin
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/pytorch_model-00002-of-00002.bin
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/pytorch_model.bin.index.json
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/special_tokens_map.json
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/tokenizer.json
+https://huggingface.co/bigscience/bloom-7b1/resolve/main/tokenizer_config.json
