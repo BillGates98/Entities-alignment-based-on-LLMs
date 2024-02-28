@@ -1,14 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-
-tokenizers = []
-models = []
-
 models = {
     "mistral": ["mistralai/Mistral-7B-v0.1", "./dir_models/mistral"],
     "qwen": ["Qwen/Qwen1.5-7B-Chat", "./dir_models/qwen"],
     "bloom": ["bigscience/bloom-7b1", "./dir_models/bloom"],
-    "gemma": ["google/gemma-2b-it", "./dir_models/gemma"]
+    "gpt": ["openai-community/gpt2", "./dir_models/gpt"]
 }
 
 for m in models:

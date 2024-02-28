@@ -389,29 +389,11 @@
         "documentation": {}
     },
     {
-        "label": "tokenizers",
-        "kind": 5,
-        "importPath": "download_model",
-        "description": "download_model",
-        "peekOfCode": "tokenizers = []\nmodels = []\nmodels = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')",
-        "detail": "download_model",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "kind": 5,
         "importPath": "download_model",
         "description": "download_model",
-        "peekOfCode": "models = []\nmodels = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')\n    tokenizer = AutoTokenizer.from_pretrained(models[m][0])",
-        "detail": "download_model",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "kind": 5,
-        "importPath": "download_model",
-        "description": "download_model",
-        "peekOfCode": "models = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')\n    tokenizer = AutoTokenizer.from_pretrained(models[m][0])\n    model = AutoModelForCausalLM.from_pretrained(models[m][0])",
+        "peekOfCode": "models = {\n    \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n    \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n    \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n    \"gpt\": [\"openai-community/gpt2\", \"./dir_models/gpt\"]\n}\nfor m in models:\n    print('Model ', m, ' is downloading ...')\n    tokenizer = AutoTokenizer.from_pretrained(models[m][0])\n    model = AutoModelForCausalLM.from_pretrained(models[m][0])",
         "detail": "download_model",
         "documentation": {}
     },
@@ -555,7 +537,7 @@
         "kind": 6,
         "importPath": "model",
         "description": "model",
-        "peekOfCode": "class LLM:\n    def __init__(self, model_name=None):\n        self.model_name = model_name\n        self.models = {\n            \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral\"],\n            \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen\"],\n            \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom\"],\n            \"gemma\": [\"google/gemma-2b-it\", \"./dir_models/gemma\"]\n        }\n    def mistral(self):",
+        "peekOfCode": "class LLM:\n    def __init__(self, model_name=None):\n        self.model_name = model_name\n        self.models = {\n            \"mistral\": [\"mistralai/Mistral-7B-v0.1\", \"./dir_models/mistral/Mistral-7B-v0.1\"],\n            \"qwen\": [\"Qwen/Qwen1.5-7B-Chat\", \"./dir_models/qwen/Qwen1.5-7B-Chat\"],\n            \"bloom\": [\"bigscience/bloom-7b1\", \"./dir_models/bloom/bloom-7b1\"],\n            \"gpt\": [\"openai-community/gpt2\", \"./dir_models/gpt/gpt2\"]\n        }\n    def mistral(self):",
         "detail": "model",
         "documentation": {}
     }
