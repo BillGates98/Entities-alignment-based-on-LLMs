@@ -30,9 +30,12 @@ class DeepSimilarity:
         return 'no'
 
     def gpt(self, query=''):
+        print('GPT started generation ...0% ')
         input_ids = self.tokenizer(query, return_tensors="pt")
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
+        print('Output :> ', output)
+        print('GPT ended generation ...100% ')
         if 'yes' in output.lower():
             return 'yes'
         return 'no'

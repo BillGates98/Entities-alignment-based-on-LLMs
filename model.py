@@ -45,7 +45,7 @@ class LLM:
         elif self.model_name == 'qwen':
             return self.qwen()
         elif self.model_name == 'gpt':
-            return (None, None)
+            return self.gpt()
         elif self.model_name == 'bloom':
             return self.bloom()
         return (None, None)
