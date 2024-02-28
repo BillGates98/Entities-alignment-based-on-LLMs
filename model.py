@@ -41,7 +41,7 @@ class LLM:
 
     def load(self):
         if self.model_name == 'mistral':
-            return self.llama()
+            return self.mistral()
         elif self.model_name == 'qwen':
             return self.qwen()
         elif self.model_name == 'gpt':
