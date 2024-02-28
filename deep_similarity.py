@@ -11,9 +11,12 @@ class DeepSimilarity:
         print('model name : ', model_name)
 
     def mistral(self, query=""):
+        print('Mistral started generation ...0% ')
         input_ids = self.tokenizer(query, return_tensors="pt")
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
+        print('Output :> ', output)
+        print('Mistral ended generation ...100% ')
         if 'yes' in output.lower():
             return 'yes'
         return 'no'
@@ -41,9 +44,12 @@ class DeepSimilarity:
         return 'no'
 
     def bloom(self, query=''):
+        print('Bloom started generation ...0% ')
         input_ids = self.tokenizer(query, return_tensors="pt")
         outputs = self.model.generate(**input_ids, max_length=2000)
         output = self.tokenizer.decode(outputs[0])
+        print('Output :> ', output)
+        print('Bloom ended generation ...100% ')
         if 'yes' in output.lower():
             return 'yes'
         return 'no'
