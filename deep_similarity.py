@@ -21,7 +21,9 @@ class DeepSimilarity:
     def qwen(self, query=''):
         print('Qwen started generation ...0% ')
         input_ids = self.tokenizer(query, return_tensors="pt").to('cuda')
-        outputs = self.model.generate(**input_ids, max_length=2000)
+        outputs = self.model.generate(input_ids["input_ids"],
+                                      max_length=2000,
+                                      no_repeat_ngram_size=2)
         output = self.tokenizer.decode(outputs[0])
         print('Output :> ', output)
         print('Qwen ended generation ...100% ')
